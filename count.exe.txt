@@ -1,0 +1,19 @@
+@echo off
+cd c:\
+set code=
+set countm=0
+set countb=1
+goto loop
+
+:loop
+waitfor dummy /t 1>nul 2>&1 & verify>nul
+if %countm% ==25 (
+set code=
+set countm=0
+set /a countb=countb+1
+cls)
+set code=%code%%random%
+set /a countm=countm+1
+title %countm%/25回 %countb%フェーズ
+echo code
+goto loop
